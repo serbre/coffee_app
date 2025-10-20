@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-coffee-900 via-coffee-800 to-green-mountain-900 min-h-screen text-coffee-50;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Georgia', serif;
+  }
+}
+
+@layer components {
+  /* Glass morphism effect */
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-lg;
+  }
+
+  .glass-card {
+    @apply glass p-6 shadow-xl;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply bg-coffee-600 hover:bg-coffee-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl;
+  }
+
+  .btn-secondary {
+    @apply bg-green-mountain-600 hover:bg-green-mountain-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl;
+  }
+
+  .btn-outline {
+    @apply border-2 border-coffee-400 text-coffee-100 hover:bg-coffee-600 hover:text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200;
+  }
+
+  /* Input styles */
+  .input-field {
+    @apply glass px-4 py-2 text-white placeholder-coffee-300 focus:outline-none focus:ring-2 focus:ring-coffee-400;
+  }
+
+  /* Card styles */
+  .product-card {
+    @apply glass-card hover:scale-105 transition-transform duration-300 cursor-pointer;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(166, 124, 82, 0.6);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(166, 124, 82, 0.8);
+}
