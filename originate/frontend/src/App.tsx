@@ -6,6 +6,7 @@ import { HomePage } from './pages/HomePage'
 import { ProductsPage } from './pages/ProductsPage'
 import { CartPage } from './pages/CartPage'
 import { LoginPage } from './pages/LoginPage'
+import { DashboardPage } from './pages/DashboardPage'
 
 function App() {
   return (
@@ -19,14 +20,15 @@ function App() {
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/cart" element={<CartPage />} />
               <Route path="/login" element={<LoginPage />} />
+              <Route path="/dashboard" element={<DashboardPage />} />
               {/* Add more routes as we build them */}
               <Route path="*" element={
                 <div className="min-h-screen flex items-center justify-center">
-                  <div className="glass-card text-center">
-                    <h2 className="text-2xl font-display font-bold text-coffee-50 mb-2">
+                  <div className="bg-coffee-900 border border-white/10 rounded-3xl p-8 shadow-2xl text-center">
+                    <h2 className="text-2xl font-display font-bold text-white mb-2">
                       Coming Soon
                     </h2>
-                    <p className="text-coffee-200">
+                    <p className="text-gray-400">
                       This page is under construction
                     </p>
                   </div>

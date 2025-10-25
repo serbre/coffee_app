@@ -7,30 +7,44 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Coffee-inspired color palette for Cafe Monteverde
+        // Modern coffee palette - black/white base with warm accents
         'coffee': {
-          50: '#faf7f4',
-          100: '#f0e8df',
-          200: '#e1d1bf',
-          300: '#cfb299',
-          400: '#bd9373',
-          500: '#a67c52',
-          600: '#8b6240',
-          700: '#6f4e33',
-          800: '#5c3f2a',
-          900: '#4a3320',
+          50: '#fafaf9',
+          100: '#f5f5f4',
+          200: '#e7e5e4',
+          300: '#d6d3d1',
+          400: '#a8a29e',
+          500: '#78716c',
+          600: '#57534e',
+          700: '#44403c',
+          800: '#292524',
+          900: '#1c1917',
         },
-        'green-mountain': {
-          50: '#f0fdf4',
-          100: '#dcfce7',
-          200: '#bbf7d0',
-          300: '#86efac',
-          400: '#4ade80',
-          500: '#22c55e',
-          600: '#16a34a',
-          700: '#15803d',
-          800: '#166534',
-          900: '#14532d',
+        // Accent color - warm amber/orange for CTAs
+        'accent': {
+          50: '#fff7ed',
+          100: '#ffedd5',
+          200: '#fed7aa',
+          300: '#fdba74',
+          400: '#fb923c',
+          500: '#f97316',
+          600: '#ea580c',
+          700: '#c2410c',
+          800: '#9a3412',
+          900: '#7c2d12',
+        },
+        // Subtle earth tones for farm imagery
+        'earth': {
+          50: '#fafaf9',
+          100: '#f5f5f4',
+          200: '#e4e4e3',
+          300: '#d4d4d2',
+          400: '#a3a39f',
+          500: '#737370',
+          600: '#52524e',
+          700: '#3d3d39',
+          800: '#262624',
+          900: '#171715',
         }
       },
       fontFamily: {

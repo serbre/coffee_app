@@ -17,7 +17,7 @@ export const ProductsPage = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-coffee-200 text-xl">Loading our finest coffees...</div>
+        <div className="text-gray-300 text-xl">Loading our finest coffees...</div>
       </div>
     )
   }
@@ -25,9 +25,9 @@ export const ProductsPage = () => {
   if (error) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="glass-card text-center">
+        <div className="bg-coffee-900 border border-white/10 rounded-3xl p-6 shadow-2xl text-center">
           <p className="text-red-400 mb-4">Error loading products: {error}</p>
-          <p className="text-coffee-300">Please make sure your Supabase is configured correctly.</p>
+          <p className="text-gray-400">Please make sure your Supabase is configured correctly.</p>
         </div>
       </div>
     )
@@ -42,20 +42,20 @@ export const ProductsPage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="text-5xl font-display font-bold text-coffee-50 mb-4">
+          <h1 className="text-5xl font-display font-bold text-white mb-4">
             Our Collection
           </h1>
-          <p className="text-coffee-200 text-lg">
+          <p className="text-gray-400 text-lg">
             Discover our carefully curated selection of specialty coffees
           </p>
         </motion.div>
 
         {/* Filters */}
-        <div className="glass-card mb-8">
+        <div className="bg-coffee-900 border border-white/10 rounded-3xl p-6 shadow-2xl mb-8">
           <div className="flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
             {/* Category Filter */}
             <div className="flex-1">
-              <label className="block text-coffee-200 text-sm mb-2">Category</label>
+              <label className="block text-gray-300 text-sm font-medium mb-2">Category</label>
               <select
                 value={categoryFilter}
                 onChange={(e) => setCategoryFilter(e.target.value)}
@@ -71,7 +71,7 @@ export const ProductsPage = () => {
 
             {/* Roast Filter */}
             <div className="flex-1">
-              <label className="block text-coffee-200 text-sm mb-2">Roast Level</label>
+              <label className="block text-gray-300 text-sm font-medium mb-2">Roast Level</label>
               <select
                 value={roastFilter}
                 onChange={(e) => setRoastFilter(e.target.value)}
@@ -85,7 +85,7 @@ export const ProductsPage = () => {
             </div>
 
             {/* Results Count */}
-            <div className="text-coffee-200 text-sm md:pt-6">
+            <div className="text-gray-400 text-sm md:pt-6">
               {filteredProducts.length} {filteredProducts.length === 1 ? 'product' : 'products'}
             </div>
           </div>
@@ -93,8 +93,8 @@ export const ProductsPage = () => {
 
         {/* Products Grid */}
         {filteredProducts.length === 0 ? (
-          <div className="glass-card text-center py-12">
-            <p className="text-coffee-200 text-lg">
+          <div className="bg-coffee-900 border border-white/10 rounded-3xl p-6 shadow-2xl text-center py-12">
+            <p className="text-gray-300 text-lg">
               No products match your filters. Try adjusting your selection.
             </p>
           </div>

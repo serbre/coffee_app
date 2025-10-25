@@ -4,30 +4,46 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline'
 
 export const HomePage = () => {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
+    <div className="min-h-screen bg-black">
+      {/* Hero Section with Farm Image */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-coffee-900/80 via-coffee-800/80 to-green-mountain-900/80" />
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="/assets/coffee-farm.jpg"
+            alt="Coffee farm"
+            className="w-full h-full object-cover opacity-40"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black" />
+        </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-10 text-center px-4 max-w-4xl"
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="relative z-10 text-center px-4 max-w-5xl"
         >
-          <h1 className="text-6xl md:text-8xl font-display font-bold text-coffee-50 mb-6">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="text-accent-400 font-semibold tracking-wider uppercase mb-4"
+          >
+            From Farm to Cup
+          </motion.p>
+          <h1 className="text-7xl md:text-9xl font-display font-bold text-white mb-6 tracking-tight">
             Originate
           </h1>
-          <p className="text-xl md:text-2xl text-coffee-200 mb-8">
-            Discover exceptional coffee from premium roasters worldwide
+          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+            Connect with local coffee suppliers and discover exceptional beans from farms around the world
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/products" className="btn-primary flex items-center justify-center space-x-2">
-              <span>Shop Our Collection</span>
-              <ArrowRightIcon className="h-5 w-5" />
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link to="/products" className="btn-primary flex items-center justify-center space-x-2 group">
+              <span>Explore Coffee</span>
+              <ArrowRightIcon className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link to="/subscriptions" className="btn-secondary">
-              Subscribe & Save
+            <Link to="/login" className="btn-outline">
+              Become a Supplier
             </Link>
           </div>
         </motion.div>
@@ -36,87 +52,189 @@ export const HomePage = () => {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
         >
-          <div className="w-6 h-10 border-2 border-coffee-400 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-coffee-400 rounded-full mt-2" />
+          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-accent-500 rounded-full mt-2" />
           </div>
         </motion.div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 px-4">
+      {/* Farm to Cup Journey */}
+      <section className="py-32 px-4 bg-gradient-to-b from-black to-coffee-900">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="text-4xl font-display font-bold text-coffee-50 mb-4">
-              Why Originate?
+            <h2 className="text-5xl md:text-6xl font-display font-bold text-white mb-6">
+              Your Coffee Journey
             </h2>
-            <p className="text-coffee-200 text-lg">
-              Connect directly with the world's finest specialty coffee roasters
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Experience the complete story from sustainable farms to your morning cup
             </p>
           </motion.div>
 
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <img
+                src="/assets/coffee-workers.jpg"
+                alt="Coffee workers harvesting"
+                className="rounded-3xl shadow-2xl"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="space-y-6"
+            >
+              <div className="inline-block bg-accent-500/10 text-accent-400 px-4 py-2 rounded-full text-sm font-semibold">
+                Step 1: The Farm
+              </div>
+              <h3 className="text-4xl font-display font-bold text-white">
+                Sustainable Sourcing
+              </h3>
+              <p className="text-gray-300 text-lg leading-relaxed">
+                Our partnered farms practice ethical and sustainable cultivation methods, ensuring the highest quality beans while supporting local communities and preserving the environment.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start space-x-3">
+                  <span className="text-accent-500 mt-1">✓</span>
+                  <span className="text-gray-300">Direct trade with coffee farmers</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <span className="text-accent-500 mt-1">✓</span>
+                  <span className="text-gray-300">Organic and sustainable farming practices</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <span className="text-accent-500 mt-1">✓</span>
+                  <span className="text-gray-300">Fair compensation for growers</span>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="space-y-6 lg:order-2"
+            >
+              <div className="inline-block bg-accent-500/10 text-accent-400 px-4 py-2 rounded-full text-sm font-semibold">
+                Step 2: Local Suppliers
+              </div>
+              <h3 className="text-4xl font-display font-bold text-white">
+                Trusted Partners
+              </h3>
+              <p className="text-gray-300 text-lg leading-relaxed">
+                Connect with verified local suppliers who roast fresh, deliver fast, and bring the world's finest coffee directly to your neighborhood.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start space-x-3">
+                  <span className="text-accent-500 mt-1">✓</span>
+                  <span className="text-gray-300">Freshly roasted to order</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <span className="text-accent-500 mt-1">✓</span>
+                  <span className="text-gray-300">Expert roasters you can trust</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <span className="text-accent-500 mt-1">✓</span>
+                  <span className="text-gray-300">Fast local delivery</span>
+                </li>
+              </ul>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="lg:order-1"
+            >
+              <img
+                src="/assets/coffee-journey.png"
+                alt="Coffee journey"
+                className="rounded-3xl shadow-2xl"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Grid */}
+      <section className="py-20 px-4 bg-coffee-900">
+        <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="glass-card text-center"
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all"
             >
-              <div className="text-green-mountain-400 mb-4">
-                <svg className="w-16 h-16 mx-auto" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11H9v-2h2v2zm0-4H9V5h2v4z" />
+              <div className="text-accent-500 mb-4">
+                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
                 </svg>
               </div>
-              <h3 className="text-xl font-display font-bold text-coffee-50 mb-2">
-                Curated Selection
+              <h3 className="text-2xl font-display font-bold text-white mb-3">
+                Quality Guaranteed
               </h3>
-              <p className="text-coffee-200">
-                Carefully vetted roasters offering the finest single-origin and specialty blends
+              <p className="text-gray-400 leading-relaxed">
+                Every batch is carefully selected and quality-tested to ensure exceptional flavor in every cup
               </p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="glass-card text-center"
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all"
             >
-              <div className="text-green-mountain-400 mb-4">
-                <svg className="w-16 h-16 mx-auto" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6z" />
+              <div className="text-accent-500 mb-4">
+                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-display font-bold text-coffee-50 mb-2">
-                Direct from Roasters
+              <h3 className="text-2xl font-display font-bold text-white mb-3">
+                Local Connection
               </h3>
-              <p className="text-coffee-200">
-                Fresh coffee shipped directly from roasters to your door, ensuring peak flavor
+              <p className="text-gray-400 leading-relaxed">
+                Support your community by purchasing from local suppliers who care about quality and service
               </p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="glass-card text-center"
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all"
             >
-              <div className="text-green-mountain-400 mb-4">
-                <svg className="w-16 h-16 mx-auto" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                  <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5z" clipRule="evenodd" />
+              <div className="text-accent-500 mb-4">
+                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-display font-bold text-coffee-50 mb-2">
-                Support Artisan Roasters
+              <h3 className="text-2xl font-display font-bold text-white mb-3">
+                Fair Pricing
               </h3>
-              <p className="text-coffee-200">
-                Every purchase directly supports independent roasters and sustainable practices
+              <p className="text-gray-400 leading-relaxed">
+                Transparent pricing that ensures farmers and suppliers receive fair compensation for their work
               </p>
             </motion.div>
           </div>
@@ -124,23 +242,29 @@ export const HomePage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4">
+      <section className="py-32 px-4 bg-gradient-to-b from-coffee-900 to-black">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto glass-card text-center"
+          className="max-w-4xl mx-auto text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-coffee-50 mb-4">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
             Ready to Discover Your Perfect Coffee?
           </h2>
-          <p className="text-coffee-200 text-lg mb-8">
-            Join our marketplace and explore exceptional coffee from premium roasters worldwide
+          <p className="text-gray-300 text-xl mb-12 max-w-2xl mx-auto">
+            Join our marketplace and connect with local suppliers bringing exceptional coffee from farms to your cup
           </p>
-          <Link to="/products" className="btn-primary inline-flex items-center space-x-2">
-            <span>Start Shopping</span>
-            <ArrowRightIcon className="h-5 w-5" />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link to="/products" className="btn-primary inline-flex items-center justify-center space-x-2">
+              <span>Start Shopping</span>
+              <ArrowRightIcon className="h-5 w-5" />
+            </Link>
+            <Link to="/login" className="btn-outline">
+              Become a Supplier
+            </Link>
+          </div>
         </motion.div>
       </section>
     </div>
