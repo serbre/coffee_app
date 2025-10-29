@@ -35,6 +35,9 @@ export const Navbar = () => {
             <Link to="/roasters" className="text-gray-300 hover:text-white transition-colors font-medium">
               Suppliers
             </Link>
+            <Link to="/about" className="text-gray-300 hover:text-white transition-colors font-medium">
+              About
+            </Link>
           </div>
 
           {/* Right side icons */}

@@ -7,6 +7,8 @@ import { ProductsPage } from './pages/ProductsPage'
 import { CartPage } from './pages/CartPage'
 import { LoginPage } from './pages/LoginPage'
 import { DashboardPage } from './pages/DashboardPage'
+import { SuppliersPage } from './pages/SuppliersPage'
+import { AboutPage } from './pages/AboutPage'
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
               <Route path="/cart" element={<CartPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/roasters" element={<SuppliersPage />} />
+              <Route path="/suppliers" element={<SuppliersPage />} />
+              <Route path="/about" element={<AboutPage />} />
               {/* Add more routes as we build them */}
               <Route path="*" element={
                 <div className="min-h-screen flex items-center justify-center">

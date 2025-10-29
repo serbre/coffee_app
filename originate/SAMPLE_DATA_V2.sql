@@ -23,7 +23,7 @@ INSERT INTO company_providers (user_id, company_name, description, country) VALU
 (
   'YOUR_COMPANY_PROVIDER_USER_ID',
   'Café Monteverde',
-  'Premium specialty coffee from the cloud forests of Costa Rica. We connect coffee lovers with exceptional beans through our network of local suppliers.',
+  'A collective of 21 families dedicated to sustainable, seed-to-cup coffee production in the cloud forests of Monteverde, Costa Rica. We produce specialty single-origin Arabica coffee using three distinct milling processes: Fully Washed, Honey, and Natural. Committed to environmental sustainability, community impact, and connecting coffee lovers directly to the origin.',
   'Costa Rica'
 );
 */
@@ -165,11 +165,11 @@ INSERT INTO products (company_provider_id, name, description, price, category, r
 INSERT INTO suppliers (user_id, business_name, description, delivery_zones, location_city, location_state, location_country) VALUES
 (
   'YOUR_SUPPLIER_USER_ID',
-  'Café Monteverde - San José',
-  'Official Café Monteverde supplier serving the San José metropolitan area. Fresh coffee delivered to your door.',
-  ARRAY['San José', 'Escazú', 'Santa Ana', 'Heredia'],
-  'San José',
-  'San José',
+  'Café Monteverde Farm & Roastery',
+  'Official Café Monteverde roastery located in the heart of Monteverde cloud forest. We are a collective of 21 families producing sustainable, specialty coffee. Roasted at origin and delivered fresh. Offering farm tours, tastings, and educational experiences. Open Monday-Sunday, 8am-5pm. Contact: info@cafedemonteverde.com',
+  ARRAY['San José', 'Escazú', 'Santa Ana', 'Cartago', 'Atenas'],
+  'Monteverde',
+  'Puntarenas',
   'Costa Rica'
 );
 */
@@ -249,7 +249,7 @@ BEGIN
   VALUES (
     company_user_id,
     'Café Monteverde',
-    'Premium specialty coffee from the cloud forests of Costa Rica.',
+    'A collective of 21 families dedicated to sustainable, seed-to-cup coffee production in the cloud forests of Monteverde, Costa Rica. We produce specialty single-origin Arabica coffee using three distinct milling processes: Fully Washed, Honey, and Natural. Committed to environmental sustainability, community impact, and connecting coffee lovers directly to the origin.',
     'Costa Rica'
   )
   RETURNING id INTO company_id;
@@ -258,10 +258,10 @@ BEGIN
   INSERT INTO suppliers (user_id, business_name, description, delivery_zones, location_city, location_country)
   VALUES (
     supplier_user_id,
-    'Café Monteverde - San José',
-    'Official supplier serving San José area.',
-    ARRAY['San José', 'Escazú', 'Santa Ana'],
-    'San José',
+    'Café Monteverde Farm & Roastery',
+    'Official Café Monteverde roastery located in the heart of Monteverde cloud forest. A collective of 21 families producing sustainable, specialty coffee. Roasted at origin and delivered fresh. Offering farm tours, tastings, and educational experiences. Open Monday-Sunday, 8am-5pm. Contact: info@cafedemonteverde.com',
+    ARRAY['Monteverde', 'Santa Elena', 'Puntarenas', 'San José', 'Heredia'],
+    'Monteverde',
     'Costa Rica'
   )
   RETURNING id INTO supplier_id;
