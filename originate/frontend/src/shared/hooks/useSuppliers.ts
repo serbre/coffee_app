@@ -16,7 +16,14 @@ export const useSuppliers = () => {
       setLoading(true)
       const { data, error } = await supabase
         .from('suppliers')
-        .select('*')
+        .select(`
+          *,
+          supplier_company_relationships!inner (
+            company_provider_id,
+            status
+          )
+        `)
+        .eq('supplier_company_relationships.status', 'approved')
         .order('business_name')
 
       if (error) throw error

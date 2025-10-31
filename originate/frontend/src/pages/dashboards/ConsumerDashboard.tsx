@@ -1,9 +1,16 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../../shared/contexts/AuthContext'
+import { useOrders } from '../../shared/hooks/useOrders'
+import { useSupplierConnections } from '../../shared/hooks/useSupplierConnections'
 import { ShoppingBagIcon, TruckIcon, ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline'
 
 export const ConsumerDashboard = () => {
   const { profile } = useAuth()
+  const { orders } = useOrders()
+  const { activeConnections } = useSupplierConnections()
+
+  const activeOrders = orders.filter(o => ['pending', 'confirmed', 'preparing', 'shipped'].includes(o.status))
 
   return (
     <div className="min-h-screen py-12 px-4">
@@ -35,7 +42,7 @@ export const ConsumerDashboard = () => {
                 <ShoppingBagIcon className="h-8 w-8 text-accent-400" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-white">0</div>
+                <div className="text-2xl font-bold text-white">{activeOrders.length}</div>
                 <div className="text-sm text-gray-400">Active Orders</div>
               </div>
             </div>
@@ -52,7 +59,7 @@ export const ConsumerDashboard = () => {
                 <TruckIcon className="h-8 w-8 text-accent-400" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-white">0</div>
+                <div className="text-2xl font-bold text-white">{activeConnections.length}</div>
                 <div className="text-sm text-gray-400">Suppliers</div>
               </div>
             </div>
@@ -117,9 +124,9 @@ export const ConsumerDashboard = () => {
                 </div>
               </div>
             </div>
-            <button className="btn-primary w-full mt-6">
+            <Link to="/suppliers" className="btn-primary w-full mt-6 text-center block">
               Browse Suppliers
-            </button>
+            </Link>
           </motion.div>
 
           {/* Recent Activity */}

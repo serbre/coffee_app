@@ -5,10 +5,16 @@ import { Navbar } from './shared/components/Navbar'
 import { HomePage } from './pages/HomePage'
 import { ProductsPage } from './pages/ProductsPage'
 import { CartPage } from './pages/CartPage'
+import { CheckoutPage } from './pages/CheckoutPage'
+import { OrdersPage } from './pages/OrdersPage'
 import { LoginPage } from './pages/LoginPage'
 import { DashboardPage } from './pages/DashboardPage'
 import { SuppliersPage } from './pages/SuppliersPage'
 import { AboutPage } from './pages/AboutPage'
+import { SubscriptionsPage } from './pages/SubscriptionsPage'
+import { ProfileSettingsPage } from './pages/ProfileSettingsPage'
+import { SupplierOnboardingPage } from './pages/onboarding/SupplierOnboardingPage'
+import { CompanyProviderOnboardingPage } from './pages/onboarding/CompanyProviderOnboardingPage'
 
 function App() {
   return (
@@ -21,11 +27,17 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/cart" element={<CartPage />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/orders" element={<OrdersPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/roasters" element={<SuppliersPage />} />
               <Route path="/suppliers" element={<SuppliersPage />} />
               <Route path="/about" element={<AboutPage />} />
+              <Route path="/subscriptions" element={<SubscriptionsPage />} />
+              <Route path="/profile/settings" element={<ProfileSettingsPage />} />
+              <Route path="/onboarding/supplier" element={<SupplierOnboardingPage />} />
+              <Route path="/onboarding/company" element={<CompanyProviderOnboardingPage />} />
               {/* Add more routes as we build them */}
               <Route path="*" element={
                 <div className="min-h-screen flex items-center justify-center">

@@ -1,11 +1,22 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useSuppliers } from '../shared/hooks/useSuppliers'
-import { MapPinIcon, PhoneIcon, EnvelopeIcon, ClockIcon } from '@heroicons/react/24/outline'
+import { useSupplierConnections } from '../shared/hooks/useSupplierConnections'
+import { useAuth } from '../shared/contexts/AuthContext'
+import { MapPinIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
 
 export const SuppliersPage = () => {
   const { suppliers, loading, error } = useSuppliers()
+  const { user, profile } = useAuth()
+  const {
+    connectWithSupplier,
+    disconnectFromSupplier,
+    reconnectWithSupplier,
+    isConnectedToSupplier,
+    connections
+  } = useSupplierConnections()
   const [locationFilter, setLocationFilter] = useState<string>('all')
+  const [connectingSupplier, setConnectingSupplier] = useState<string | null>(null)
 
   const filteredSuppliers = suppliers.filter(supplier => {
     if (locationFilter === 'all') return true
@@ -183,9 +194,33 @@ export const SuppliersPage = () => {
                 {/* Contact Info */}
                 <div className="p-6 border-t border-white/10">
                   <div className="flex items-center justify-between">
-                    <button className="btn-primary">
-                      Connect with Supplier
-                    </button>
+                    {user && profile?.role === 'consumer' ? (
+                      isConnectedToSupplier(supplier.id) ? (
+                        <div className="flex items-center space-x-2 text-green-400">
+                          <CheckCircleIcon className="h-5 w-5" />
+                          <span className="font-semibold">Connected</span>
+                        </div>
+                      ) : (
+                        <button
+                          onClick={async () => {
+                            setConnectingSupplier(supplier.id)
+                            const companyProviderId = supplier.supplier_company_relationships?.[0]?.company_provider_id
+                            if (companyProviderId) {
+                              await connectWithSupplier(supplier.id, companyProviderId)
+                            }
+                            setConnectingSupplier(null)
+                          }}
+                          disabled={connectingSupplier === supplier.id}
+                          className="btn-primary"
+                        >
+                          {connectingSupplier === supplier.id ? 'Connecting...' : 'Connect with Supplier'}
+                        </button>
+                      )
+                    ) : (
+                      <a href="/login" className="btn-primary">
+                        Sign in to Connect
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.div>

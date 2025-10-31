@@ -40,8 +40,14 @@ export const LoginPage = () => {
         }
         const { error } = await signUp(email, password, fullName, role)
         if (error) throw error
-        // Navigate immediately - DashboardPage will handle loading state
-        navigate('/dashboard')
+        // Navigate to onboarding based on role
+        if (role === 'supplier') {
+          navigate('/onboarding/supplier')
+        } else if (role === 'company_provider') {
+          navigate('/onboarding/company')
+        } else {
+          navigate('/dashboard')
+        }
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')

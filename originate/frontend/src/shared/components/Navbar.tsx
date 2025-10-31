@@ -66,6 +66,12 @@ export const Navbar = () => {
                     Dashboard
                   </Link>
                   <Link
+                    to="/profile/settings"
+                    className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
+                  >
+                    Profile Settings
+                  </Link>
+                  <Link
                     to="/orders"
                     className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
                   >
