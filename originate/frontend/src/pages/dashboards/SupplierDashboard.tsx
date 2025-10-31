@@ -1,9 +1,18 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../../shared/contexts/AuthContext'
+import { useSupplierProfile } from '../../shared/hooks/useSupplierProfile'
+import { useSupplierOrders } from '../../shared/hooks/useSupplierOrders'
+import { useSupplierConsumers } from '../../shared/hooks/useSupplierConsumers'
 import { UsersIcon, ShoppingBagIcon, BuildingStorefrontIcon } from '@heroicons/react/24/outline'
 
 export const SupplierDashboard = () => {
   const { profile } = useAuth()
+  const { supplierProfile } = useSupplierProfile()
+  const { pendingOrders, activeOrders, orders } = useSupplierOrders()
+  const { activeConsumers } = useSupplierConsumers()
+
+  const recentOrders = orders.slice(0, 5)
 
   return (
     <div className="min-h-screen py-12 px-4">
@@ -35,7 +44,7 @@ export const SupplierDashboard = () => {
                 <UsersIcon className="h-8 w-8 text-accent-400" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-white">0</div>
+                <div className="text-2xl font-bold text-white">{activeConsumers.length}</div>
                 <div className="text-sm text-gray-400">Active Consumers</div>
               </div>
             </div>
@@ -52,7 +61,7 @@ export const SupplierDashboard = () => {
                 <ShoppingBagIcon className="h-8 w-8 text-accent-400" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-white">0</div>
+                <div className="text-2xl font-bold text-white">{pendingOrders.length}</div>
                 <div className="text-sm text-gray-400">Pending Orders</div>
               </div>
             </div>
@@ -127,18 +136,46 @@ export const SupplierDashboard = () => {
             transition={{ delay: 0.5 }}
             className="bg-coffee-900 border border-white/10 rounded-3xl p-6 shadow-2xl"
           >
-            <h2 className="text-2xl font-display font-bold text-white mb-4">
-              Recent Orders
-            </h2>
-            <div className="text-center py-12">
-              <div className="text-gray-600 mb-4">
-                <ShoppingBagIcon className="h-16 w-16 mx-auto opacity-30" />
-              </div>
-              <p className="text-gray-400">No orders yet</p>
-              <p className="text-sm text-gray-500 mt-2">
-                Orders will appear here once consumers connect with you
-              </p>
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-2xl font-display font-bold text-white">
+                Recent Orders
+              </h2>
+              {orders.length > 0 && (
+                <Link to="/supplier/orders" className="text-accent-400 hover:text-accent-300 text-sm">
+                  View All
+                </Link>
+              )}
             </div>
+            {recentOrders.length === 0 ? (
+              <div className="text-center py-12">
+                <div className="text-gray-600 mb-4">
+                  <ShoppingBagIcon className="h-16 w-16 mx-auto opacity-30" />
+                </div>
+                <p className="text-gray-400">No orders yet</p>
+                <p className="text-sm text-gray-500 mt-2">
+                  Orders will appear here once consumers connect with you
+                </p>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                {recentOrders.map((order) => (
+                  <div key={order.id} className="bg-black/30 rounded-xl p-4 hover:bg-black/40 transition-colors">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-white font-medium">Order #{order.id.slice(0, 8)}</span>
+                      <span className={`text-xs px-2 py-1 rounded-full ${
+                        order.status === 'pending' ? 'bg-yellow-500/20 text-yellow-400' :
+                        order.status === 'confirmed' ? 'bg-blue-500/20 text-blue-400' :
+                        order.status === 'shipped' ? 'bg-cyan-500/20 text-cyan-400' :
+                        'bg-green-500/20 text-green-400'
+                      }`}>
+                        {order.status}
+                      </span>
+                    </div>
+                    <p className="text-gray-400 text-sm">${order.total_amount.toFixed(2)} • {new Date(order.created_at).toLocaleDateString()}</p>
+                  </div>
+                ))}
+              </div>
+            )}
           </motion.div>
         </div>
       </div>

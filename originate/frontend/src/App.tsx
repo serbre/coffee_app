@@ -15,6 +15,7 @@ import { SubscriptionsPage } from './pages/SubscriptionsPage'
 import { ProfileSettingsPage } from './pages/ProfileSettingsPage'
 import { SupplierOnboardingPage } from './pages/onboarding/SupplierOnboardingPage'
 import { CompanyProviderOnboardingPage } from './pages/onboarding/CompanyProviderOnboardingPage'
+import { SupplierOrdersPage } from './pages/supplier/SupplierOrdersPage'
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
               <Route path="/profile/settings" element={<ProfileSettingsPage />} />
               <Route path="/onboarding/supplier" element={<SupplierOnboardingPage />} />
               <Route path="/onboarding/company" element={<CompanyProviderOnboardingPage />} />
+              <Route path="/supplier/orders" element={<SupplierOrdersPage />} />
               {/* Add more routes as we build them */}
               <Route path="*" element={
                 <div className="min-h-screen flex items-center justify-center">
